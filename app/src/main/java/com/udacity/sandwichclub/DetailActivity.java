@@ -88,9 +88,12 @@ public class DetailActivity extends AppCompatActivity {
                 TextView textView = findViewById(R.id.also_known_label);
                 textView.setVisibility(View.INVISIBLE);
             } else {
+                StringBuilder res = new StringBuilder();
                 for (String alsoKnown : sandwich.getAlsoKnownAs()) {
-                    alsoKnownTextView.setText(alsoKnown);
+                    res.append(alsoKnown).append(", ");
                 }
+                res = new StringBuilder(res.toString().replaceAll(", $", ""));
+                alsoKnownTextView.setText(res.toString());
             }
 
             descriptionTextView.setText(sandwich.getDescription());
